@@ -1,6 +1,6 @@
 # fludUI
 
-# Personal UI Challenge
+Personal UI Challenge
 
 # Day 1
 
