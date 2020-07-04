@@ -38,12 +38,10 @@ class _HomePageState extends State<HomePage> {
       return Padding(
         padding: const EdgeInsets.only(top: 15),
         child: GestureDetector(
-          child: AnimatedContainer(
-              duration: Duration(milliseconds: 500),
-              curve: Curves.easeIn,
+          child: Container(
               child: Column(
                 children: <Widget>[
-                  Text(title, style: TextStyle(color: _selectedIndex == index ? Colors.white : Colors.grey[100], fontSize: 15)),
+                  Text(title, style: TextStyle(color: _selectedIndex == index ? Colors.white : Colors.grey[100], fontSize: 15, fontWeight: FontWeight.w600)),
                   Expanded(child: Container()),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 1.0),
@@ -53,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                     ) : Container(
                       width: MediaQuery.of(context).size.width / 3, height: 3,
                     ),
-                  )
+                  ),
                 ],
               )
           ),
@@ -69,13 +67,19 @@ class _HomePageState extends State<HomePage> {
     Widget selectPage() {
       switch(_selectedIndex) {
         case 0:
-          return Center(child: Text('ALL'));
+          return Container(
+            child: listView()
+          );
           break;
         case 1:
-          return Center(child: Text('QUEUED'));
+          return Container(
+              child: listView()
+          );
           break;
         case 2:
-          return Center(child: Text('FINISHED'));
+          return Container(
+              child: listView()
+          );
           break;
       }
       return Container();
@@ -133,4 +137,50 @@ class _HomePageState extends State<HomePage> {
           )),
     );
   }
+}
+
+Widget listView() {
+  List<String> torrentTitle = ['The Truman Show (1998) 1080p', 'The Man from Nowhere [2010]', 'The Theory of Everything (2014)'];
+  List<String> progress = ['1.2 GB/1.6 GB', '823 MB/1.8GB', '1.5 GB/1.5GB'];
+  List<String> status = ['In Progress: 75%', 'In Progress: 45%', 'In Progress: 99%'];
+  List<double> value = [0.75, 0.45, 0.99];
+  return ListView.builder(
+    shrinkWrap: true,
+    itemCount: progress.length,
+    itemBuilder: (context, index) {
+      return Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10),
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 10),
+            Row(
+              children: <Widget>[
+                Icon(Icons.play_circle_filled, color: Colors.lightBlue, size: 70),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Text(torrentTitle[index], style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)),
+                      SizedBox(height: 7),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 1.4,
+                        child: LinearProgressIndicator(value: value[index]),
+                      ),
+                      SizedBox(height: 7),
+                      Text(status[index], style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.w400)),
+                      SizedBox(height: 7),
+                      Text(progress[index], style: TextStyle(fontWeight: FontWeight.w400))
+                    ],
+                  ),
+                )
+              ],
+            ),
+            Divider(indent: 20, endIndent: 20, color: Colors.grey[400], thickness: 1)
+          ],
+        ),
+      );
+    },
+  );
 }
