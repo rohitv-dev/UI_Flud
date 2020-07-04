@@ -1,16 +1,7 @@
 # fludUI
 
-A new Flutter project.
+# Personal UI Challenge
 
-## Getting Started
+# Day 1
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  Basically, I decided to make at least one UI screen per day to further my capibilities in designing apps. I am doing this because I focused so much on backend that I feel I am reasonably good at it, howeover, I made little to no progress in frontend. So yeah, here's the first day of work in UI. I am going to make clones of some apps for now, until I have a good grasp to make one on my own.
